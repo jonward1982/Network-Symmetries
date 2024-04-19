@@ -1,0 +1,12 @@
+input file = ../graphs/test_examples/Star5.scy
+vertices = 5
+edges = 4
+group size = 2.400000e1
+levels = 4
+nodes = 11
+generators = 3
+total support = 6
+average support = 2.00
+nodes per generator = 3.67
+bad nodes = 0
+cpu time (s) = 0.00

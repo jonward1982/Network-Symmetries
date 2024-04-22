@@ -1,4 +1,4 @@
-input file = ../graphs/test_examples/Star5.scy
+input file = ../graphs/format_scy/test_examples/Star5.scy
 vertices = 5
 edges = 4
 group size = 2.400000e1

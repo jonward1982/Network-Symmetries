@@ -1,4 +1,4 @@
-input file = ../graphs/test_examples/C5.scy
+input file = ../graphs/format_scy/test_examples/C5.scy
 vertices = 5
 edges = 5
 group size = 1.000000e1

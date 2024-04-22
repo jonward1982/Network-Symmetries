@@ -1,4 +1,4 @@
-input file = ../graphs/test_examples/P6.scy
+input file = ../graphs/format_scy/test_examples/P6.scy
 vertices = 6
 edges = 5
 group size = 2.000000e0

@@ -15,7 +15,7 @@ import time
 start_time = time.time()
 
 # Directory path
-stub='../graphs/test_examples/'
+stub='../graphs/format_scy/test_examples/'
 
 count=1
 # Loop
@@ -33,7 +33,7 @@ for dirpath, dirnames, files in os.walk(stub):
                     fgaut=open(os.path.join(pp,fnamestub)+'.gaut','w')
                     flog=open(os.path.join(pp,fnamestub)+'.log','w')
                     print('{0:6}\t Processing: {1:20}\t Runtime: {2:e}'.format(count,fnamestub,time.time() - start_time))
-                    p=subprocess.Popen(['./saucy_mac','-s',os.path.join(dirpath,fname)],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+                    p=subprocess.Popen(['saucy','-s',os.path.join(dirpath,fname)],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
                     output, error = p.communicate()
                     fgaut.write(output.decode("utf-8"))
                     flog.write(error.decode("utf-8"))

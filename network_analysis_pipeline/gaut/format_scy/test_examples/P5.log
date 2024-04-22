@@ -1,0 +1,12 @@
+input file = ../graphs/format_scy/test_examples/P5.scy
+vertices = 5
+edges = 4
+group size = 2.000000e0
+levels = 2
+nodes = 3
+generators = 1
+total support = 4
+average support = 4.00
+nodes per generator = 3.00
+bad nodes = 0
+cpu time (s) = 0.00

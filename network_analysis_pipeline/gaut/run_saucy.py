@@ -16,7 +16,7 @@ dname='test_examples/' # Directory name
 sstub='../graphs/format_scy/' # Relative path
 
 # Run saucy code
-p=subprocess.Popen(['./saucy_mac','-s',sstub+dname+fname+'.scy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+p=subprocess.Popen(['saucy','-s',sstub+dname+fname+'.scy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 output, error = p.communicate()
 
 # Write output to file

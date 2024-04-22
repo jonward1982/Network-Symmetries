@@ -1,0 +1,12 @@
+input file = ../graphs/format_scy/test_examples/C6.scy
+vertices = 6
+edges = 6
+group size = 1.200000e1
+levels = 3
+nodes = 7
+generators = 2
+total support = 10
+average support = 5.00
+nodes per generator = 3.50
+bad nodes = 0
+cpu time (s) = 0.00

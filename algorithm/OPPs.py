@@ -1,6 +1,7 @@
 class Graph(object):
     
     def __init__(self,alist):
+        # Initialize the adjacency list, vertex set, and edge set for the graph
         self.alist=[[u for u in neighbours] for neighbours in alist]
         self.V=set(range(len(self.alist)))
         self.N=len(self.V)

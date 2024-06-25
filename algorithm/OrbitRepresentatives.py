@@ -94,4 +94,3 @@ def OrbitRepresentatives(G,pi,*args):
     
     # Return orbit representatives and count data
     return Reps,leveltests,levelsuccesses
-

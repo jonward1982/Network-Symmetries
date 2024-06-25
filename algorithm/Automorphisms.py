@@ -1,6 +1,5 @@
 import OPPs
 
-
 def GetAutomorphism(Si, Sj, G, pi, *args):
     """
     Test for automorphism between (binary) states Si and Sj with graph G.
@@ -145,6 +144,7 @@ class levelinformation(object):
         return OPPs.OrderedPartitionPair(
             self.levelpit[self.level], self.levelpib[self.level], opp.G
         )
+
 
 def mapping(opp, verbose):
 

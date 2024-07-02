@@ -7,13 +7,16 @@ def InfectionSet(S):
     obtained by switching each 0 to a 1 in turn.
     """
 
+    # Initialize an empty list to store the infection set
     Ip = []
     for i, u in enumerate(S):
         if u == 0:
+            # Create a copy of the state S
             cSu = [x for x in S]
+            # Switch the 0 at position i to 1
             cSu[i] = 1
+            # Add the new state to the infection set
             Ip.append(cSu)
-
     return Ip
 
 
@@ -41,7 +44,9 @@ def OrbitRepresentatives(G, pi, *args):
 
     # Initialise the orbit representatives
     Rm = [[0] * G.N]
+    # Initialize the final representatives list with zero and one vectors
     Reps = [[0] * G.N, [1] * G.N]
+
     # Loop to the floor of half the number of vertices
     for i in range(1, math.floor(G.N / 2) + 1):
         if verbose:
@@ -51,7 +56,7 @@ def OrbitRepresentatives(G, pi, *args):
         # Initialise the next level's orbit representatives
         Rp = []
 
-        # Counters
+        # Counters for the number of tests and successes at this level
         lcount = 0
         scount = 0
 
@@ -59,6 +64,7 @@ def OrbitRepresentatives(G, pi, *args):
         Ip = []
         for S in Rm:
             IpS = InfectionSet(S)
+            # Add unique states to the infection set
             Ip = Ip + [S for S in IpS if S not in Ip]
 
         # Loop through infection set

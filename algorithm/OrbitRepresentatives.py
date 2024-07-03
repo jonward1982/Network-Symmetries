@@ -7,7 +7,7 @@ def InfectionSet(S):
     obtained by switching each 0 to a 1 in turn.
     """
 
-    # Initialize an empty list to store the infection set
+    # Initialise an empty list to store the infection set
     Ip = []
     for i, u in enumerate(S):
         if u == 0:
@@ -28,7 +28,7 @@ def OrbitRepresentatives(G, pi, *args):
     *args - currently only expecting logical verbose
     """
 
-    # set verbose variable, default is True
+    # set verbose variable (default is True)
     if len(args) > 0:
         verbose = args[0]
     else:
@@ -44,7 +44,7 @@ def OrbitRepresentatives(G, pi, *args):
 
     # Initialise the orbit representatives
     Rm = [[0] * G.N]
-    # Initialize the final representatives list with zero and one vectors
+    # Initialise the final representatives list with zero and one vectors
     Reps = [[0] * G.N, [1] * G.N]
 
     # Loop to the floor of half the number of vertices
@@ -78,12 +78,12 @@ def OrbitRepresentatives(G, pi, *args):
                 if verbose:
                     print("Permutation:")
                     print(perm)
-                # If find automorphism, can stop looking for representative and don't need to add it
+                # If automorphism is found it can stop looking for representative and don't need to add it
                 if perm != None:
                     scount += 1
                     NotInRp = False
                     break
-            # If no automorphism, add to the next level's representatives
+            # If no automorphism if found, add to the next level's representatives
             if NotInRp:
                 Rp.append(s)
 

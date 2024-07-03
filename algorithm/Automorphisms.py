@@ -6,7 +6,6 @@ def GetAutomorphism(Si, Sj, G, pi, *args):
     Partition pi is orbit partition of vertices.
     Assume that vertices are labelled 0 to N-1 in G.
     """
-
     # Set verbosity based on arguments (default to True)
     if len(args) > 0:
         verbose = args[0]
@@ -51,12 +50,17 @@ def GetAutomorphism(Si, Sj, G, pi, *args):
 
 class levelinformation(object):
     def __init__(self, opp, verbose):
-        # Initialize level information for ordered partition pair (opp)
-        # Stored variables - set asside (roughly) right amount of memory:
+        """
+        Initialise the level information for an ordered partition pair
+
+        Args:
+            opp (OrderedPartitionPair): the ordered partition pair.
+            verbose (bool): verbosity flag for debugging purposes
+        """
         self.N = opp.G.N  # Number of vertices in the graph G
         self.verbose = verbose  # Verbosity flag for debugging purposes
 
-        # Initialize level partition information with default values
+        # Initialise level partition information with default values
         self.levelpit = [[[-1 for i in range(opp.G.N)]]] * opp.G.N
         self.levelpib = [[[-1 for i in range(opp.G.N)]]] * opp.G.N
         self.levelcellind = [-1] * opp.G.N
@@ -88,8 +92,17 @@ class levelinformation(object):
             print("!!!Trying to reset level 0 - something's gone wrong!!!")
 
     def nextnode_or_decreaselevel(self, opp):
-        # New node/level
-        # Move to the next node or decrease the level if at the end of the current cell
+        """
+        Move to the next node or decrease the level if at the end of the current cell
+
+        Args:
+            opp (OrderedPartitionPair): the ordered partition pair
+
+        Notes:
+            - If there is a next node in the current cell, stay on the same level
+                and move to the next vertex
+            - If at the end of the current cell, decrease the level
+        """
         stilllooking = True
         while stilllooking:
             if self.nodeind < len(opp.b.pi[self.cellind]) - 1:
@@ -123,13 +136,23 @@ class levelinformation(object):
                 self.returnnone = True
 
     def increaselevel(self, opp):
-        # Only called when it is possible to increase level
+        """
+        Increase the level by one.
+
+        Args:
+            opp (OrderedPartitionPair): The ordered partition pair
+
+        Notes:
+            - Only called when it is possible to increase the level
+            - Stores the current OPP partitions
+            - Picks a cell and vertex and stores their indices
+        """
         self.level += 1
         # Store the current OPP
         self.levelpit[self.level] = [[u for u in cell] for cell in opp.t.pi]
         self.levelpib[self.level] = [[u for u in cell] for cell in opp.b.pi]
 
-        # Pick cell and vertex and store
+        # Pick a cell and vertex and store their indices
         for i, cell in enumerate(opp.t.pi):
             if len(cell) > 1:
                 break
@@ -140,6 +163,15 @@ class levelinformation(object):
         self.levelnodeind[self.level] = self.nodeind
 
     def create_opp(self, opp):
+        """
+        Create a new ordered partition pair based on the stored level partitions
+
+        Args:
+            opp (OrderedPartitionPair): The ordered partition pair
+
+        Returns:
+            OrderedPartitionPair: The new ordered partition pair
+        """
         # Reset the partition
         return OPPs.OrderedPartitionPair(
             self.levelpit[self.level], self.levelpib[self.level], opp.G
@@ -147,6 +179,18 @@ class levelinformation(object):
 
 
 def mapping(opp, verbose):
+    """
+    Find automorphisms in an ordered partition pair (opp)
+    using a backtracking algorithm
+
+    Args:
+        opp (OrderedPartitionPair): the ordered partition pair
+        verbose (bool): verbosity flag for debugging purposes
+
+    Returns:
+        dict or None: a permutation mapping representing an automorphism if found,
+        or None if not
+    """
 
     if verbose:
         print("Starting mapping...")

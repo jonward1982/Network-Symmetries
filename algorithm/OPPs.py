@@ -1,8 +1,7 @@
 class Graph(object):
 
     def __init__(self, alist):
-        """
-        Initialise a graph with an adjacency list
+        """Initialise a graph with an adjacency list
 
         Args:
         alist (list[list]): the adjacency list representing the graph
@@ -17,6 +16,7 @@ class Graph(object):
 
         # Initialise the adjacency list
         self.alist = [[u for u in neighbours] for neighbours in alist]
+        #self.alist = [set(neighbours) for neighbours in alist]
         # Set of vertices
         self.V = set(range(len(self.alist)))
         # Total number of vertices
@@ -36,8 +36,7 @@ class Graph(object):
 class Partition(object):
 
     def __init__(self, pi, G):
-        """
-        Initialise a Partition object
+        """Initialise a Partition object
 
         Args:
         pi (list): a list of cells (each cell represented as a list of vertices)
@@ -69,8 +68,7 @@ class Partition(object):
         # should all be kept up to date by class functions.
 
     def __str__(self):
-        """
-        Return a string representation of the partition
+        """Return a string representation of the partition
 
         Example: [[0, 1] | [2, 3]]
         """
@@ -80,8 +78,7 @@ class Partition(object):
         # return "[%s]" % '|'.join(.join(map(str,self.pi))+']'
 
     def degree(self, u, V):
-        """
-        Calculate the number of neighbors of vertex u in cell V
+        """Calculate the number of neighbors of vertex u in cell V
 
         Args:
         u: vertex index
@@ -91,10 +88,10 @@ class Partition(object):
         int: Number of neighbors.
         """
         return len([x for x in self.G.alist[u] if x in V])
+        #return len(set(self.G.alist[u]).intersection(V))
 
     def getcelldegrees(self):
-        """
-        Compute the degrees of each cell with respect to every other cell
+        """Compute the degrees of each cell with respect to every other cell
 
         Returns:
         list: a list of lists representing cell degrees
@@ -121,8 +118,7 @@ class Partition(object):
         return degrees
 
     def split(self, u, cell):
-        """
-        Split vertex u from the specified cell
+        """Split vertex u from the specified cell
 
         Args:
             u: vertex index
@@ -153,8 +149,7 @@ class Partition(object):
             print("Node {} not in cell {}".format(u, cell))
 
     def refine(self, alpha):
-        """
-        McKay's refinement algorithm for partitioning
+        """McKay's refinement algorithm for partitioning
 
         Args:
             alpha (list): a list of cells (each cell represented as a list of vertices)
@@ -215,8 +210,7 @@ class Partition(object):
 class OrderedPartitionPair(object):
 
     def __init__(self, pit, pib, G):
-        """
-        Initialise an OPP object
+        """Initialise an OPP object
 
         Args:
             pit (list): a list of cells for the top partition
@@ -251,8 +245,7 @@ class OrderedPartitionPair(object):
         )
 
     def __str__(self):
-        """
-        Return a string representation of the ordered partition pair
+        """Return a string representation of the ordered partition pair
 
         Example: [[0, 1] | [2, 3]]\n[[4, 5] | [6, 7]]
         """
@@ -261,8 +254,7 @@ class OrderedPartitionPair(object):
         return st + "\n" + sb
 
     def split(self, ut, ub, cell):
-        """
-        Split vertices ut and ub from the specified cell
+        """Split vertices ut and ub from the specified cell
 
         Args:
             ut: vertex index in the top partition
@@ -291,8 +283,7 @@ class OrderedPartitionPair(object):
                 print("Node {} not in top cell {}".format(ub, cell))
 
     def refine(self):
-        """
-        Refine both partitions using McKay's refinement algorithm
+        """Refine both partitions using McKay's refinement algorithm
 
         Notes:
             - Updates both partitions
@@ -312,8 +303,7 @@ class OrderedPartitionPair(object):
 
 
 def GetPermutation(OPP):
-    """
-    Get permutation from a Unit OPP
+    """Get permutation from a Unit OPP
     Assume that vertices are labeled 0 to N-1
     """
     if OPP.IsUnit:

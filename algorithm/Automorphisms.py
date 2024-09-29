@@ -1,8 +1,8 @@
 import OPPs
 
+
 def GetAutomorphism(Si, Sj, G, pi, *args):
-    """
-    Test for automorphism between (binary) states Si and Sj with graph G.
+    """Test for automorphism between (binary) states Si and Sj with graph G.
     Partition pi is orbit partition of vertices.
     Assume that vertices are labelled 0 to N-1 in G.
     """
@@ -50,8 +50,7 @@ def GetAutomorphism(Si, Sj, G, pi, *args):
 
 class levelinformation(object):
     def __init__(self, opp, verbose):
-        """
-        Initialise the level information for an ordered partition pair
+        """Initialise the level information for an ordered partition pair
 
         Args:
             opp (OrderedPartitionPair): the ordered partition pair.
@@ -92,8 +91,7 @@ class levelinformation(object):
             print("!!!Trying to reset level 0 - something's gone wrong!!!")
 
     def nextnode_or_decreaselevel(self, opp):
-        """
-        Move to the next node or decrease the level if at the end of the current cell
+        """Move to the next node or decrease the level if at the end of the current cell
 
         Args:
             opp (OrderedPartitionPair): the ordered partition pair
@@ -136,8 +134,7 @@ class levelinformation(object):
                 self.returnnone = True
 
     def increaselevel(self, opp):
-        """
-        Increase the level by one.
+        """Increase the level by one.
 
         Args:
             opp (OrderedPartitionPair): The ordered partition pair
@@ -163,8 +160,7 @@ class levelinformation(object):
         self.levelnodeind[self.level] = self.nodeind
 
     def create_opp(self, opp):
-        """
-        Create a new ordered partition pair based on the stored level partitions
+        """Create a new ordered partition pair based on the stored level partitions
 
         Args:
             opp (OrderedPartitionPair): The ordered partition pair
@@ -179,8 +175,7 @@ class levelinformation(object):
 
 
 def mapping(opp, verbose):
-    """
-    Find automorphisms in an ordered partition pair (opp)
+    """Find automorphisms in an ordered partition pair (opp)
     using a backtracking algorithm
 
     Args:

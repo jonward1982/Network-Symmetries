@@ -1,9 +1,9 @@
 import math
 import Automorphisms
 
+
 def InfectionSet(S):
-    """
-    Takes a state S (a list of 0's and 1's) and produces a list of states
+    """Takes a state S (a list of 0's and 1's) and produces a list of states
     obtained by switching each 0 to a 1 in turn.
     """
 
@@ -21,8 +21,7 @@ def InfectionSet(S):
 
 
 def OrbitRepresentatives(G, pi, *args):
-    """
-    Arguments:
+    """Arguments:
     graph G
     vertex partition pi
     *args - currently only expecting logical verbose

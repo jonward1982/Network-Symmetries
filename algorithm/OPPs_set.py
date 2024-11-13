@@ -14,8 +14,8 @@ class Graph(object):
         d (list[int]): the degree (number of neighbors) for each vertex
         """
 
-        # Initialise the adjacency list
-        self.alist = [[u for u in neighbours] for neighbours in alist]
+        # Initialise the adjacency list as sets
+        self.alist = [set(neighbours) for neighbours in alist]
         # Set of vertices
         self.V = set(range(len(self.alist)))
         # Total number of vertices
@@ -86,7 +86,7 @@ class Partition(object):
         Returns:
         int: Number of neighbors.
         """
-        return len([x for x in self.G.alist[u] if x in V])
+        return len(set(self.G.alist[u]).intersection(V))
 
     def getcelldegrees(self):
         """Compute the degrees of each cell with respect to every other cell

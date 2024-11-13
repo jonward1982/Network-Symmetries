@@ -1,2 +1,5 @@
 algorithm/.ipynb_checkpoints/
 algorithm/__pycache__/
+algorithm/*.pkl
+algorithm/benchmark_list
+algorithm/benchnark_set
